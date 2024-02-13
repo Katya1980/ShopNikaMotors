@@ -1,10 +1,10 @@
 package by.teachmeslills.nikamotors.entity;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
     private long id;
-
     private String name;
     private String surname;
     private String password;
@@ -15,7 +15,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(password, user.password) && Objects.equals(login, user.login);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(login, user.login) && Objects.equals(password, user.password);
     }
 
     @Override
@@ -62,4 +62,6 @@ public class User {
     public void setLogin(String login) {
         this.login = login;
     }
+
+
 }
