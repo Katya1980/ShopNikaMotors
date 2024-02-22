@@ -15,7 +15,7 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(password, user.password) && Objects.equals(login, user.login);
+        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(password, user.password) && Objects.equals(login, user.login);
     }
 
     @Override
@@ -47,7 +47,7 @@ public class User {
         this.surname = surname;
     }
 
-    public String getPassword() {
+    public String getPassword(String surname) {
         return password;
     }
 
