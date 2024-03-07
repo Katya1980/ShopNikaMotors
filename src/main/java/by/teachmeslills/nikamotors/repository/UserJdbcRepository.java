@@ -2,13 +2,12 @@ package by.teachmeslills.nikamotors.repository;
 
 import by.teachmeslills.nikamotors.entity.User;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
-public class JdbcRepository implements ShopRepository{
+public class UserJdbcRepository implements UserRepository {
     @Override
-    public void add(User user) {
-
+    public User add(User user) {
+return null;
     }
 
     @Override

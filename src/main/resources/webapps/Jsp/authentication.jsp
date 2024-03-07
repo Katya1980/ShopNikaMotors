@@ -1,12 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="by.teachmeskills.entity.*" %>
+<!doctype html>
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta content="text/html">
+    <title>Аутентификация</title>
+
 </head>
+
 <body>
-<meta http-equiv="Content-Type" charset="UTF-8" content="text/html">
-</head>
+<div class="registration">
+<form method="post" action="http://localhost:8080/ShopNikaMotors/controller">
+    <label for="username">Логин:</label>
+    <input type="text" id="username" name="username" required><br>
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required><br>
+    <input type="submit" value="Войти">
+</form>
+</div>
+
+<br>
 <form method="post" action="http://localhost:8080/ShopNikaMotors/controller">
     <div class="container">
 
@@ -31,20 +49,6 @@
     </div>
 </form>
 
-<form name="Form"
-      method="get"
-      action="http://localhost:8080/ShopNikaMotors/controller">
-    </tаble>
-    <input type=submit value="Show all users">
-</form>
-
-<br>
-<form name="Form"
-      method="POST"
-      action="http://localhost:8080/ShopNikaMotors/controller">
-    <input type="hidden" name="put" value="PUT">
-    <input type=submit value="JSTL">
-</form>
-</form>
 </body>
+
 </html>

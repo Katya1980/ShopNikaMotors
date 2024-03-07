@@ -13,4 +13,16 @@
         <url-pattern>/controller</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>StartServlet</servlet-name>
+        <servlet-class>by.teachmeslills.nikamotors.controller.StartServlet</servlet-class>
+    </servlet>
+
+
+    <servlet-mapping>
+        <servlet-name>StartServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

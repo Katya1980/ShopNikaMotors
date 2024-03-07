@@ -3,12 +3,9 @@ package by.teachmeslills.nikamotors.repository;
 import by.teachmeslills.nikamotors.entity.User;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.OptionalLong;
+import java.util.*;
 
-public class FileRepository implements ShopRepository {
+public class FileRepository implements UserRepository {
 
     private final String filePath = "E:\\Козловская Е. В\\ShopNikaMotors\\users";
     private List<User> users;
@@ -16,19 +13,22 @@ public class FileRepository implements ShopRepository {
     public FileRepository() {
 
         users = deserializable();
-
     }
 
+
     @Override
-    public void add(User user) {
+    public User add(User user) {
         users.add(user);
         serializable();
+        return user;
+
     }
 
     @Override
     public void deleteByld(Long userId) {
-        users.removeIf(user -> OptionalLong.of(user.getId()).equals(userId));
+        users.removeIf(user -> user.getId() == userId);
         serializable();
+
 
     }
 
@@ -43,7 +43,9 @@ public class FileRepository implements ShopRepository {
             os.writeObject(users);
             System.out.println("Серилазация упешна. Количесво пользоватлей:" + users.size());
         } catch (IOException e) {
-            System.err.println("Ошибка при сериализации пользователей" + e.getMessage());
+            System.out.println("Ошибка при сериализации пользователей" + e.getMessage());
+            throw new RuntimeException(e);
+
 
         }
 
@@ -54,16 +56,14 @@ public class FileRepository implements ShopRepository {
         if (!file.exists()) {
             return new ArrayList<>();
         }
-        try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(file))) {
-            return (List<User>) is.readObject();
-
+        try (ObjectInputStream is = new ObjectInputStream(new FileInputStream(filePath))) {
+            users = (List<User>) is.readObject();
 
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Ошибка при десериализации пользователей" + e.getMessage());
-
+            System.out.println("Ошибка при десериализации пользователей" + e.getMessage());
 
         }
-        return new ArrayList<>();
+        return users;
     }
 
 }
