@@ -1,13 +1,9 @@
-package by.teachmeslills.nikamotors.entity;
+package by.teachmeslills.nikamotors.dto.user;
 
 import javax.management.relation.Role;
-import java.io.Serial;
-import java.io.Serializable;
 import java.util.Objects;
 
-public class User implements Serializable {
-    @Serial
-    private static final long serialVersionUID = -5454230850514293918L;
+public class UserRequest {
     private long id;
 
     private String name;
@@ -15,27 +11,7 @@ public class User implements Serializable {
     private String password;
     private String login;
 
-    private Role  role;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof User user)) return false;
-        return Objects.equals(role, user.role);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(role);
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
 
     public long getId() {
         return id;
@@ -77,9 +53,23 @@ public class User implements Serializable {
         this.login = login;
     }
 
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof UserRequest that)) return false;
+        return id == that.id && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(password, that.password) && Objects.equals(login, that.login);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, surname, password, login);
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+        return "UserRequest{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
